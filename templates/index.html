@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emotion Analysis</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Emotion Analysis using NLP</h1>
+
+    <form action="/predict" method="POST">
+
+        <textarea
+            name="text"
+            placeholder="Enter text..."
+            required></textarea>
+
+        <button type="submit">
+            Analyze Emotion
+        </button>
+
+    </form>
+
+    {% if prediction %}
+
+    <div class="result">
+        <h2>Detected Emotion:</h2>
+        <h1>{{ prediction }}</h1>
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
