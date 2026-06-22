@@ -1,11 +1,15 @@
 from flask import Flask, render_template, request
 import pickle
+import nltk
+
+nltk.download('punkt')
+nltk.download('stopwords')
 
 app = Flask(__name__)
 
-model = pickle.load(open("model/emotion_model.pkl", "rb"))
-vectorizer = pickle.load(open("model/vectorizer.pkl", "rb"))
-label_encoder = pickle.load(open("model/label_encoder.pkl", "rb"))
+model = pickle.load(open("model/emotion_model_.pkl", "rb"))
+vectorizer = pickle.load(open("model/vectorizer_.pkl", "rb"))
+label_encoder = pickle.load(open("model/label_encoder_.pkl", "rb"))
 
 @app.route('/')
 def home():
@@ -30,4 +34,3 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True)
-    
